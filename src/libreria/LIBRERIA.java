@@ -41,12 +41,34 @@ public class LIBRERIA {
             switch (opc) {
 
                 case 1:
+                    
+                    System.out.println("Ingrese el codigo del libro a borrar");
+                    String cod = sc.next();
+                    
+                    fx.delete(libros,cod);
+                    break;
 
                 case 2:
-                    System.out.println("cant" + libros.length );
+                    System.out.println("Ingrese el numero del libro para actualizar ");
+                    int libro = sc.nextInt();
+                    
+                    System.out.println("Ingrese el campo a actualizar ");
+                    System.out.println("0. Codigo");
+                    System.out.println("1. Nombre");
+                    System.out.println("2. Autor");
+                    System.out.println("3. Materia");
+                    System.out.println("4. N de paginas");
+                    int campo = sc.nextInt();
+                    
+                    System.out.println("Ingrese la actualizacion ");
+                    String actualizacion = sc.next();
+                    
+                    fx.update(libros, campo, libro, actualizacion);
+                    
                     break;
 
                 case 3:
+                    
                     fx.table(libros);
                     break;
 
@@ -75,7 +97,7 @@ public class LIBRERIA {
 
             }
 
-            System.out.println("Desea volver al menu principal   1. si     2.no");
+            System.out.println("Desea volver al menu principal   1. si     2.no ");
             menu = sc.nextInt();
 
         } while (menu == 1);
