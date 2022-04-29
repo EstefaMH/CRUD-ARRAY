@@ -1,84 +1,75 @@
 package libreria;
 
 import java.util.Scanner;
-import org.omg.CORBA.AnySeqHelper;
 
 public class LIBRERIA {
 
     public static void main(String[] args) {
 
-        //CLASE PARA LECTURA DE DATOS
-        Scanner sc = new Scanner(System.in);
-
         // DECLARACION DE MATRIZ PARA GUARDAR DATOS 
-        String libros[][] = new String[100][5];
-        
+        String libros[][] ;
+
+        // CREACION OBJETO PARA LA CLASE funciones
         
         funciones fx = new funciones();
+        //CLASE PARA LECTURA DE DATOS
+        Scanner sc = new Scanner(System.in);
+        int menu;
+        int add;
+
+        System.out.println("----------------------- BIENVENIDO A LA BIBLIOTECA -------------------");
+        System.out.println("Cuantos libros desea agregar : ");
+        add = sc.nextInt();
+        libros = new String[add][5];
+        insert(libros, add);
         
-        
-        int menu = 0;
 
         // MENU DE OPCIONES
         do {
+
             System.out.println("----------------------- BIENVENIDO A LA BIBLIOTECA -------------------");
-            System.out.println("1. Ingresar nuevo libro");
-            System.out.println("2. Borrar un libro");
-            System.out.println("3. Actualizar un libro");
-            System.out.println("4. Ver la biblioteca de libros\n");
+            System.out.println("1. Borrar un libro");
+            System.out.println("2. Actualizar un libro");
+            System.out.println("3. Ver la biblioteca de libros");
+            System.out.println("4. Ordenar los libros\n");
             System.out.println("SELECCIONE UNA OPCION");
 
             //LECTURA DE OPCION SELECCIONADA
             int opc = sc.nextInt();
             int seg = 0;
-            int cantidad = 0;
-           
 
             switch (opc) {
 
                 case 1:
-                        
-                    do {
-                        fx.insert();
-                        System.out.println("Desea agregar mas libros :    1. si   2. no");
-                        seg = sc.nextInt();
-                    } while (seg == 1);
-                    
-                    break;
 
                 case 2:
+                    System.out.println("cant" + libros.length );
                     break;
 
                 case 3:
+                    fx.table(libros);
                     break;
 
                 case 4:
-                  /*  for (int i = 0; i < cantidad; i++) {
-                        System.out.println("LIBRO N " + (i + 1) + " \n ");
-                        for (int j = 0; j < 5;) {
-                            System.out.println("Codigo :" + );
-                            j++;
 
-                            System.out.println("Nombre :" + libros[i][1]);
-                            j++;
+                    System.out.print("Desde cual campo va a organizar los datos: ");
+                    System.out.println("0. Codigo");
+                    System.out.println("1. Nombre");
+                    System.out.println("2. Autor");
+                    System.out.println("3. Materia");
+                    System.out.println("4. N de paginas");
+                    int col = sc.nextInt();
 
-                            System.out.println("Autor :" + libros[i][2]);
-                            j++;
+                    System.out.println("\n---- METODO ---- ");
+                    System.out.println("1. Burbuja");
+                    System.out.println("2. Insercion");
+                    System.out.println("3. Seleccion\n");
+                    System.out.println("Ingrese una opcion");
+                    int opt = sc.nextInt();
 
-                            System.out.println("Materia :" + libros[i][3]);
-                            j++;
-
-                            System.out.println("Numero de paginas :" + libros[i][4]);
-                            j++;
-
-                        }
-                    }
+                    fx.ordenamiento(opt , col , libros);
                     break;
-                    */
-                    
-                    fx.table();
-                    break;
-                
+
                 default:
                     System.out.println("La opcion seleccionada es incorrecta");
 
@@ -90,5 +81,36 @@ public class LIBRERIA {
         } while (menu == 1);
     }
 
+    public static String[][] insert(String libros[][], int add) {
+
+        //DECLARACION DE SCANNER 
+        Scanner sc = new Scanner(System.in);
+
+        for (int i = 0; i < add; i++) {
+            System.out.println("\nLIBRO N " + (i+ 1) + " \n ");
+            for (int j = 0; j < 5;) {
+                System.out.println("Ingrese el codigo :");
+                libros[i][0] = sc.next();
+                j++;
+
+                System.out.println("Ingrese el nombre :");
+                libros[i][1] = sc.next();
+                j++;
+
+                System.out.println("Ingrese el autor :");
+                libros[i][2] = sc.next();
+                j++;
+
+                System.out.println("Ingrese la materia :");
+                libros[i][3] = sc.next();
+                j++;
+
+                System.out.println("Ingrese el numero de paginas :");
+                libros[i][4] = sc.next();
+                j++;
+            }
+        }
+        return libros;
+    }
 
 }

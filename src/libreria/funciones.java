@@ -4,21 +4,22 @@ import java.util.Scanner;
 
 public class funciones {
 
+    /*
     int add;
-    int cantidad =0;
+    int cantidad = 0;
     String libros[][] = new String[100][5];
+    int opc;
 
-    String[][] insert() {
+    int insert() {
 
         //DECLARACION DE SCANNER 
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Cuantos libros desea agregar : ");
         add = sc.nextInt();
-        
 
-        for (int i = 0 ; i < add ; i++) {
-            System.out.println("\nLIBRO N " + (cantidad+1) + " \n ");
+        for (int i = 0; i < add; i++) {
+            System.out.println("\nLIBRO N " + (cantidad + 1) + " \n ");
             for (int j = 0; j < 5;) {
                 System.out.println("Ingrese el codigo :");
                 libros[cantidad][0] = sc.next();
@@ -42,8 +43,8 @@ public class funciones {
             }
             cantidad++;
         }
-        return libros;
-    }                            
+        return cantidad;
+    }
 
     /*  String[][] delete() {
 
@@ -54,11 +55,11 @@ public class funciones {
 
         return libros;
     }*/
-    String[][] table() {
-        System.out.println("can"+cantidad);
+    String[][] table(String libros[][]) {
         
-        for (int i = 0; i < cantidad; i++) {
-            System.out.println("\nLIBRO N " + (i+1)  + " \n ");
+
+        for (int i = 0; i < libros.length ; i++) {
+            System.out.println("\nLIBRO N " + (i + 1) + " \n ");
             for (int j = 0; j < 5;) {
                 System.out.println("Ingrese el codigo : " + libros[i][0]);
                 j++;
@@ -75,8 +76,76 @@ public class funciones {
                 System.out.println("Ingrese el numero de paginas :" + libros[i][4]);
                 j++;
             }
-             
+
         }
         return libros;
     }
-}     
+    
+    void ordenamiento(int opc, int col, String libros[][]) {
+        System.out.println("vant " + libros.length);
+
+        switch (opc) {
+
+            case 1:
+                String[] auxiliar = new String[libros.length];
+
+                for (int i = 0; i < libros.length; i++) {
+                    for (int j = 0; j < libros.length - 1; j++) {
+                        if (libros[j][col].compareTo(libros[j + 1][col]) > 0) {
+                            auxiliar = libros[j];
+                            libros[j] = libros[j + 1];
+                            libros[j + 1] = auxiliar;
+                        }
+                    }
+                }
+
+                System.out.println("Productos ordenados: ");
+
+                for (int i = 0; i <= libros.length - 1; i++) {
+                    System.out.println(libros[i][0] + ", " + libros[i][1] + ", " + libros[i][2] + ", " + libros[i][3] + ", " + libros[i][4]);
+                }
+                break;
+                
+            case 2:
+                String aux[] = new String[libros.length];
+                int pos =0 ; 
+
+                for (int i = 0; i < libros.length; i++) {
+                    for (int j = 0 ; j < 4 ; j++) {
+                        pos=i;
+                        aux = libros[i];
+                        
+                        
+                        
+                        if ((libros[pos+1][col].charAt(0) > libros[pos][col].charAt(0))) {
+                            aux = libros[pos];
+                        }
+                       
+
+                    }
+                    System.out.println(aux);
+                }
+                break;
+
+            case 3:
+                String auxx = "";
+                int minimo = 0;
+
+                for (int i = 0; i < libros.length ; i++) {
+                    minimo = i;
+                    for (int j = i + 1; j < libros.length; j++) {
+                        if (libros[j][col].compareTo(libros[minimo][col]) > 0) {
+                            minimo = j;
+                        }
+                    }
+                    /*auxx = libros[i];
+                    libros[i] = libros[minimo];
+                    libros[minimo] = auxx;*/
+                }
+
+                break;
+
+        }
+
+    }
+}
