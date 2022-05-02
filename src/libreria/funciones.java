@@ -1,50 +1,9 @@
 package libreria;
 
-import java.util.Scanner;
+//import java.util.Scanner;
 
 public class funciones {
 
-    /*
-    int add;
-    int cantidad = 0;
-    String libros[][] = new String[100][5];
-    int opc;
-
-    int insert() {
-
-        //DECLARACION DE SCANNER 
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Cuantos libros desea agregar : ");
-        add = sc.nextInt();
-
-        for (int i = 0; i < add; i++) {
-            System.out.println("\nLIBRO N " + (cantidad + 1) + " \n ");
-            for (int j = 0; j < 5;) {
-                System.out.println("Ingrese el codigo :");
-                libros[cantidad][0] = sc.next();
-                j++;
-
-                System.out.println("Ingrese el nombre :");
-                libros[cantidad][1] = sc.next();
-                j++;
-
-                System.out.println("Ingrese el autor :");
-                libros[cantidad][2] = sc.next();
-                j++;
-
-                System.out.println("Ingrese la materia :");
-                libros[cantidad][3] = sc.next();
-                j++;
-
-                System.out.println("Ingrese el numero de paginas :");
-                libros[cantidad][4] = sc.next();
-                j++;
-            }
-            cantidad++;
-        }
-        return cantidad;
-    }*/
     String[][] delete(String libros[][], String cod) {
         for (int i = 0; i < libros.length; i++) {
             for (int j = 0; j < 5; j++) {
@@ -64,16 +23,18 @@ public class funciones {
     }
 
     String[][] update(String libros[][], int campo, int libro , String actualizacion) {
-
-        for (int i = 0; i < libros.length; i++) {
-            for (int j = 0; j < 5; j++) {   
+        try {
+            for (int i = 0; i < libros.length; i++) {
+                for (int j = 0; j < 5; j++) {   
                     libros[libro][campo] = actualizacion;  
+                }
             }
+            System.out.println("LIBRO ACTUALIZADO CON EXITO");
+            
+        }catch (Exception e) {
+            System.err.println("");
         }
-        
-        System.out.println("LIBRO ACTUALIZADO CON EXITO");
-        return libros;
-        
+        return libros; 
     }
 
     String[][] table(String libros[][]) {
@@ -105,7 +66,7 @@ public class funciones {
         System.out.println("vant " + libros.length);
 
         switch (opc) {
-
+            //Método burbuja
             case 1:
                 String[] auxiliar = new String[libros.length];
 
@@ -125,7 +86,7 @@ public class funciones {
                     System.out.println(libros[i][0] + ", " + libros[i][1] + ", " + libros[i][2] + ", " + libros[i][3] + ", " + libros[i][4]);
                 }
                 break;
-
+            //Método Inserción
             case 2:
                 String aux[] = new String[libros.length];
                 int pos = 0;
@@ -143,7 +104,7 @@ public class funciones {
                     System.out.println(aux);
                 }
                 break;
-
+            //Metodo de Seleccion
             case 3:
                 String auxx = "";
                 int minimo = 0;

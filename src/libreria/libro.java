@@ -55,9 +55,4 @@ public class libro {
     public void setnPag(String nPag) {
         this.nPag = nPag;
     }
-   
- 
-
-   
-    
 }

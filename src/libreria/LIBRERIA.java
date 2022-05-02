@@ -16,7 +16,6 @@ public class LIBRERIA {
         Scanner sc = new Scanner(System.in);
         int menu;
         int add;
-
         System.out.println("----------------------- BIENVENIDO A LA BIBLIOTECA -------------------");
         System.out.println("Cuantos libros desea agregar : ");
         add = sc.nextInt();
@@ -35,10 +34,10 @@ public class LIBRERIA {
             System.out.println("SELECCIONE UNA OPCION");
 
             //LECTURA DE OPCION SELECCIONADA
-            int opc = sc.nextInt();
+            int opcion = sc.nextInt();
             int seg = 0;
 
-            switch (opc) {
+            switch (opcion) {
 
                 case 1:
                     
@@ -104,10 +103,8 @@ public class LIBRERIA {
     }
 
     public static String[][] insert(String libros[][], int add) {
-
         //DECLARACION DE SCANNER 
         Scanner sc = new Scanner(System.in);
-
         for (int i = 0; i < add; i++) {
             System.out.println("\nLIBRO N " + (i+ 1) + " \n ");
             for (int j = 0; j < 5;) {
